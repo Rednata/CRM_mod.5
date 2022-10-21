@@ -2,7 +2,7 @@
   position: relative;  /*чтобы выставить close*/
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);
   max-width: 792px;
-  padding: 32px 85px 39px 106px;
+  padding: 32px 106px 39px;
   background-color: var(--container-color);
   margin: 0 auto;
 }
@@ -12,19 +12,32 @@
   font-size: 12px;
 }
 
-.form__title {
-  font-size: 24px;
-  letter-spacing: 2px;
+.form__wrapper-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   padding-bottom: 19px;
   border-bottom: 1px solid var(--table-border-color);
   margin-bottom: 26px;
+}
+
+.form__title {
+  font-size: 24px;
+  letter-spacing: 2px;
+  /* padding-bottom: 19px;
+  border-bottom: 1px solid var(--table-border-color);
+  margin-bottom: 26px; */
+}
+
+.form__id {
+  font-size: 10px;
+  color: #c5c5c5;
 }
 
 .form__inner {
   background-color: var(--light-text-color);
   border-radius: 8px;
   padding: 25px 49px 31px 7px;
-  margin-left: 20px;
   margin-bottom: 25px;
 }
 
