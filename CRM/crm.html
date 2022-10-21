@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+  <link rel="stylesheet" href="./index-crm.css">
+  <title>CRM</title>
+</head>
+<body>
+  
+  <div class="container-crm">
+    <div class="overlay">
+      <form class="form" action="https://jsonplaceholder.typicode.com/posts" method="post">
+
+        <h1 class="form__title">Добавить товар</h1>
+        <div class="form__inner">
+          <ul class="form__list">
+            <li class="item">
+              <label class="item__label" for="name">Наименование</label>
+              <input class="item__input" type="text" name="name" id="name">
+            </li>
+
+            <li class="item">
+              <label class="item__label" for="category">Категория</label>
+              <input class="item__input" type="text" name="category" id="category">
+            </li>
+
+            <li class="item">
+              <label class="item__label" for="units">Единицы измерения</label>
+              <input class="item__input" type="text" name="units" id="units">
+            </li>
+
+            <li class="item discount">
+              <fieldset class="discount__fieldset">
+                <label class="item__label" for="discount">Дисконт</label>                  
+                <div class="discount__inner">                                        
+                  <input class="discount__checkbox" type="checkbox"  id="discount" name="discount">
+                  <input type="text" class="discount__input" name="discount_descript">
+                </div>                  
+                </fieldset>                
+            </li>
+            
+            <li class="item item_descript">
+              <label class="item__label" for="descript">Описание</label>
+              <textarea class="item__textarea" name="descript" id="descript">
+              </textarea>
+            </li>
+            
+            <li class="item item_count">
+              <label class="item__label" for="count">Количество</label>
+              <input class="item__input" type="number" name="count" id="count">
+            </li>
+            
+            <li class="item">
+              <label class="item__label" for="price">Цена</label>
+              <input  class="item__input" type="number" name="price" id="price">
+            </li>            
+          </ul>
+          
+          <button class="button form__button" type="button">Добавить изображение</button>
+        </div>  
+
+        <div class="form__footer footer">
+          <p class="footer__sum">Итоговая стоимость: <span class="footer__sum-color">$&nbsp;900.00</span></p>
+        
+          <button class="button footer__button" type="submit">Добавить товар</button>
+        </div>
+      </form>
+      
+    </div> 
+    <button class="close">
+      <span class="close__dush close__dush_first"></span>
+      <span class="close__dush close__dush_second"></span>
+    </button>
+  </div>
+ 
+</body>
+</html>
