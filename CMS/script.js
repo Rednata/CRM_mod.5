@@ -62,13 +62,25 @@ const tableBody = doc.querySelector('.tbody');
 
 const createRow = (obj) => {
 
-  const elemTR = doc.createElement('tr');
-  const keys = Object.keys(obj);
+  const elemTR = doc.createElement('tr');  
+  const values = Object.values(obj);
 
-  for (const key of keys) {  
+  for (const i of values) {  
+
+    if (typeof i !== 'object') {
       let elemTD = doc.createElement('td');  
-      elemTD.textContent = obj[key];
+      elemTD.textContent = i;
       elemTR.append(elemTD);    
+
+    }  else {
+      const valueInner = Object.values(i)      
+
+      for (j of valueInner) {
+        let elemTD = doc.createElement('td');  
+        elemTD.textContent = j;
+        elemTR.append(elemTD);    
+      }
+    }
   }
   tableBody.append(elemTR);
 }
