@@ -68,17 +68,13 @@ const createRow = (obj) => {
   for (const i of values) {  
 
     if (typeof i !== 'object') {
-      let elemTD = doc.createElement('td');  
-      elemTD.textContent = i;
-      elemTR.append(elemTD);    
+      elemTR.insertAdjacentHTML('beforeend', `<td>${i}</td>`)
 
     }  else {
       const valueInner = Object.values(i)      
 
-      for (j of valueInner) {
-        let elemTD = doc.createElement('td');  
-        elemTD.textContent = j;
-        elemTR.append(elemTD);    
+      for (j of valueInner) {        
+        elemTR.insertAdjacentHTML('beforeend', `<td>${j}</td>`)
       }
     }
   }
