@@ -72,16 +72,17 @@ const createRow = (obj) => {
     <td>${obj.count}</td>
     <td>${obj.price}</td>
     <td></td>    
-    <td><button><img src=${obj.images.small}></button></td>
-    <td><button><img src=${obj.images.big}></button></td>
+    <td><button></button></td>
+    <td><button></button></td>
     <td><button></button></td>`      
   )
   tableBody.append(elemTR);
+  
 }
 
 const renderGoods = (arr) => {
   arr.map(item => {    
-    createRow(item);
+    createRow(item);   
   })
 
   // Почему советовали использовать метод .map? C .forEach все то же самое получается ведь
