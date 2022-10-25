@@ -145,24 +145,6 @@ td:nth-child(n+4) {
   background-color: transparent;
 }
 
-td:nth-child(8) .td__btn {
-  background-image: url("./assets/clarity_picture-line.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-td:nth-child(9) .td__btn {
-  background-image: url("./assets/icons_edit.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-td:last-child .td__btn {
-  background-image: url("./assets/cart.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .footer {
   display: flex;
   justify-content: flex-end;  

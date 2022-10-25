@@ -62,22 +62,20 @@ const tableBody = doc.querySelector('.tbody');
 
 const createRow = (obj) => {
 
-  const elemTR = doc.createElement('tr');  
-  const values = Object.values(obj);
-
-  for (const i of values) {  
-
-    if (typeof i !== 'object') {
-      elemTR.insertAdjacentHTML('beforeend', `<td>${i}</td>`)
-
-    }  else {
-      const valueInner = Object.values(i)      
-
-      for (j of valueInner) {        
-        elemTR.insertAdjacentHTML('beforeend', `<td>${j}</td>`)
-      }
-    }
-  }
+  const elemTR = doc.createElement('tr');    
+  
+  elemTR.insertAdjacentHTML('beforeend', 
+    `<td>${obj.id}</td>
+    <td>${obj.title}</td>
+    <td>${obj.category}</td>
+    <td>${obj.units}</td>
+    <td>${obj.count}</td>
+    <td>${obj.price}</td>
+    <td></td>    
+    <td><button><img src=${obj.images.small}></button></td>
+    <td><button><img src=${obj.images.big}></button></td>
+    <td><button></button></td>`      
+  )
   tableBody.append(elemTR);
 }
 
