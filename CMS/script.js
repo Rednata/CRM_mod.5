@@ -57,12 +57,11 @@ const arr = [
   }
 ]
 
-const doc = document;
-const tableBody = doc.querySelector('.tbody');
+const tableBody = document.querySelector('.tbody');
 
 const createRow = (obj) => {
 
-  const elemTR = doc.createElement('tr');    
+  const elemTR = document.createElement('tr');    
   
   elemTR.insertAdjacentHTML('beforeend', 
     `<td>${obj.id}</td>
@@ -85,10 +84,25 @@ const renderGoods = (arr) => {
     createRow(item);   
   })
 
-  // Почему советовали использовать метод .map? C .forEach все то же самое получается ведь
-  /* arr.forEach(item => {
-    createRow(item)
-  }); */
 }
 
 renderGoods(arr);
+
+const addGoodButton = document.querySelector('.features__button');
+const visibleCRM = document.querySelector('.container-crm');
+const closeCrmByButton = document.querySelector('.close');
+const closeCrmByBody = document.querySelector('.cms');
+
+addGoodButton.addEventListener('click', () => {
+  visibleCRM.classList.add('is-visible');
+});
+
+closeCrmByButton.addEventListener('click', () => {  
+  visibleCRM.classList.remove('is-visible');
+});
+
+closeCrmByBody.addEventListener('click', () => {  
+  visibleCRM.classList.remove('is-visible');
+}, true)
+
+

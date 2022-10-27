@@ -1,10 +1,24 @@
-.container-crm {
-  position: relative;  /*чтобы выставить close*/
+.container-crm {  
+  position: absolute;
+  top: 100px;
+  right: 0;
+  left: 0;
+  margin: auto;
+  left: center;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);
   max-width: 792px;
   padding: 32px 106px 39px;
-  background-color: var(--container-color);
-  margin: 0 auto;
+  background-color: var(--container-color);  
+  opacity: 0;
+}
+
+.container-crm.is-visible {  
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.overlay {
+  position: relative;  /*чтобы выставить close*/
 }
 
 .form {
@@ -124,7 +138,7 @@
   width: 250px;
 }
 
-.footer {
+.crm__footer {
   display: flex;
   gap: 10px;
 }

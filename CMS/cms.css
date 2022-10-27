@@ -145,7 +145,7 @@ td:nth-child(n+4) {
   background-color: transparent;
 }
 
-.footer {
+.cms__footer {
   display: flex;
   justify-content: flex-end;  
   padding: 15px 20px;
@@ -216,7 +216,7 @@ td:nth-child(n+4) {
   td, th {
     padding: 10px 10px;
   }
-  .footer {
+  .cms__footer {
     justify-content: center;
   }
 }
@@ -234,7 +234,7 @@ td:nth-child(n+4) {
   .features__form {
     width: 100%;
   }
-  .footer {
+  .cms__footer {
     justify-content: flex-start;
     padding-left: 10px;
     padding-right: 0;    
@@ -251,7 +251,7 @@ td:nth-child(n+4) {
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer {
+  .cms__footer {
     font-size: 12px;
   }  
   
