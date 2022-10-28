@@ -93,7 +93,7 @@ const visibleCRM = document.querySelector('.container-crm');
 const closeCrmByButton = document.querySelector('.close');
 const closeCrmByBody = document.querySelector('.cms');
 
-addGoodButton.addEventListener('click', () => {
+addGoodButton.addEventListener('click', e => {  
   visibleCRM.classList.add('is-visible');
 });
 
@@ -101,8 +101,14 @@ closeCrmByButton.addEventListener('click', () => {
   visibleCRM.classList.remove('is-visible');
 });
 
-closeCrmByBody.addEventListener('click', () => {  
+closeCrmByBody.addEventListener('click', ()=> {
+  console.log('asdasdasdasd');
+});
+
+closeCrmByBody.addEventListener('click', () => {
   visibleCRM.classList.remove('is-visible');
-}, true)
+}, true);
+
+
 
 
