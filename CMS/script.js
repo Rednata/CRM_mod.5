@@ -74,6 +74,25 @@ const arr = [
   },
 ];
 
+// Удаляю статику
+document.querySelectorAll('.tr').forEach(tr => {
+  tr.remove();
+});
+
+// Прописываю доп.свойство для объекта sum
+arr.map(elem => (elem.sum = elem.price * elem.count));
+
+const sumInTable = document.querySelector('.subtitle-cash');
+
+// Нахожу суммы всех элементов массива и записываю это значение в textContent
+const countSumInTable = () => {
+  const sum = arr.reduce((acc, elem) => acc + elem.sum, 0);
+  console.log(sumInTable);
+  return sumInTable.textContent = sum;
+};
+
+countSumInTable();
+
 const tableBody = document.querySelector('.tbody');
 
 const createRow = (obj) => {
@@ -88,7 +107,7 @@ const createRow = (obj) => {
     <td>${obj.units}</td>
     <td>${obj.count}</td>
     <td>${obj.price}</td>
-    <td></td>    
+    <td>${obj.sum}</td>    
     <td><button></button></td>
     <td><button></button></td>
     <td><button class="td__btn td__btn_cart">
@@ -110,42 +129,92 @@ renderGoods(arr);
 const addGoodButton = document.querySelector('.features__button');
 const visibleCRM = document.querySelector('.overlay');
 
+const htmlID = document.querySelector('.vendor-code__id');
+
+const closeForm = () => {
+  visibleCRM.classList.remove('is-visible');
+};
+
+const randomID = () => Math.trunc(Math.random() * 1000000000);
+
 addGoodButton.addEventListener('click', e => {
   visibleCRM.classList.add('is-visible');
+  const id = randomID();
+  htmlID.textContent = id;
 });
 
 visibleCRM.addEventListener('click', e => {
   if (e.target.classList.contains('overlay') ||
     e.target.closest('.close')) {
-    visibleCRM.classList.remove('is-visible');
+    closeForm();
   }
 });
 
-// Mod.5_6
-
 const deleteTR = (target) => {
-  target.closest('.tr').remove();
-  const textID = (target.closest('.tr').textContent).substring(0, 9);
-  let count = 1;
-  const delElemInArray = arr.findIndex(elem => (String(elem.id) === textID));
-  if (delElemInArray === -1) {
-    count = 0;
-  }
+  target.remove();
+};
 
-  return [delElemInArray, count];
+const deleteItemObj = (target) => {
+  const itemID = (target.textContent).slice(0, 9);
+  const indexElemID = arr.findIndex(elem => elem.id === Number(itemID));
+  arr.splice(indexElemID, 1);
+  console.log(arr);
+  countSumInTable();
 };
 
 tableBody.addEventListener('click', e => {
-  const target = e.target;
-
-  if (target.closest('.td__btn_cart')) {
-    const delTR = deleteTR(target);
-
-    const [splice1, splice2] = delTR;
-
-    arr.splice(splice1, splice2);
-    console.log(arr);
+  if (e.target.closest('.td__btn_cart')) {
+    const tableTR = e.target.closest('.tr');
+    deleteTR(tableTR);
+    deleteItemObj(tableTR);
   }
+});
+
+const addGoodsInArray = (good, id) => {
+  good.id = id;
+  good.sum = good.price * good.count;
+  arr.push(good);
+};
+
+const form = document.querySelector('.form');
+const modalSum = document.querySelector('.footer__sum-cash');
+
+form.count.addEventListener('change', e => {
+  modalSum.textContent = e.target.value * (form.price.value || 0);
+});
+
+form.price.addEventListener('change', e => {
+  modalSum.textContent = e.target.value * (form.count.value || 0);
+});
+
+form.discount.addEventListener('change', e => {
+  console.dir(e.target.checked);
+  if (e.target.checked) {
+    form.discount_descript.removeAttribute('disabled');
+  } else {
+    form.discount_descript.value = '';
+    form.discount_descript.setAttribute('disabled', 'disabled');
+  }
+});
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const id = htmlID.textContent;
+
+  const formData = new FormData(e.target);
+  const newGood = Object.fromEntries(formData);
+
+  console.log(newGood);
+  addGoodsInArray(newGood, id);
+  createRow(newGood);
+
+  countSumInTable();
+  console.log(form.discount.value);
+
+
+  form.reset();
+  closeForm();
 });
 
 

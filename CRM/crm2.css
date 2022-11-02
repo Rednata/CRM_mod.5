@@ -3,6 +3,7 @@
   top: 100px;
   right: 0;
   left: 0;
+  height: 100%;
   margin: auto;
   opacity: 0;
   visibility: hidden;
@@ -27,8 +28,6 @@
   transition: 0.2s;
 }
 
-
-
 .form {
   text-transform: uppercase;
   font-size: 12px;
@@ -46,12 +45,15 @@
 .form__title {
   font-size: 24px;
   letter-spacing: 2px;
-  /* padding-bottom: 19px;
-  border-bottom: 1px solid var(--table-border-color);
-  margin-bottom: 26px; */
 }
 
-.form__id {
+/* .form__id {
+  font-size: 10px;
+  color: #c5c5c5;
+} */
+
+.form__id, 
+.vendor-code__id {
   font-size: 10px;
   color: #c5c5c5;
 }
@@ -158,7 +160,8 @@
   padding-left: 28px;
 }
 
-.footer__sum-color {
+.footer__sum-currency,
+.footer__sum-cash {
   font-weight: 700;
   font-size: 18px;
   color: var(--accent-btn-color);  

@@ -26,7 +26,8 @@
   color: var(--main-name-color);
 }
 
-.subtitle-color {
+.subtitle-currency,
+.subtitle-cash {
   font-weight: 700;
   font-size: 18px;
   color: var(--accent-btn-color);  
