@@ -212,8 +212,8 @@ form.addEventListener('submit', e => {
   countSumInTable();
   console.log(form.discount.value);
 
-
   form.reset();
+  modalSum.textContent = '';
   closeForm();
 });
 
