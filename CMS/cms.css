@@ -26,7 +26,8 @@
   color: var(--main-name-color);
 }
 
-.subtitle-color {
+.subtitle-currency,
+.subtitle-cash {
   font-weight: 700;
   font-size: 18px;
   color: var(--accent-btn-color);  
@@ -130,6 +131,10 @@ tr {
   border-bottom: 1px solid var(--table-border-color);
 }
 
+.tr-none {
+  display: none;
+}
+
 td {
   padding: 13px 15px;
 }
@@ -195,7 +200,7 @@ td:nth-child(n+4) {
   transform: rotate(180deg)
 }
 
-@media(max-width:1100px) {
+@media(max-width:1200px) {
   .container-cms {
     padding: 50px
   } 

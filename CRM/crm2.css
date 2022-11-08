@@ -1,26 +1,31 @@
-.container-crm {    
+.overlay {
   position: absolute;
   top: 100px;
   right: 0;
   left: 0;
+  height: 100%;
   margin: auto;
-  left: center;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.container-crm {    
+  position: relative; /*чтобы выставить close*/
+  top: 100px;
+  right: 0;
+  left: 0;
+  margin: auto;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.25);
   max-width: 792px;
   padding: 32px 106px 39px;
   background-color: var(--container-color);  
-  opacity: 0;
-  visibility: hidden;
 }
 
-.container-crm.is-visible {    
+.overlay.is-visible {    
   opacity: 1;
   visibility: visible;
   transition: 0.2s;
-}
-
-.overlay {
-  position: relative;  /*чтобы выставить close*/
 }
 
 .form {
@@ -40,12 +45,15 @@
 .form__title {
   font-size: 24px;
   letter-spacing: 2px;
-  /* padding-bottom: 19px;
-  border-bottom: 1px solid var(--table-border-color);
-  margin-bottom: 26px; */
 }
 
-.form__id {
+/* .form__id {
+  font-size: 10px;
+  color: #c5c5c5;
+} */
+
+.form__id, 
+.vendor-code__id {
   font-size: 10px;
   color: #c5c5c5;
 }
@@ -152,7 +160,8 @@
   padding-left: 28px;
 }
 
-.footer__sum-color {
+.footer__sum-currency,
+.footer__sum-cash {
   font-weight: 700;
   font-size: 18px;
   color: var(--accent-btn-color);  

@@ -12,8 +12,9 @@
 <body>
 <!-- -------------- CRM  Модальное окно -------------  -->
 <!-- -------------- CRM  Модальное окно -------------  -->
+<div class="overlay">
 <div class="container-crm">
-  <div class="overlay">
+
     <button class="close">
       <span class="close__dush close__dush_first"></span>
       <span class="close__dush close__dush_second"></span>
@@ -22,23 +23,25 @@
       
       <div class="form__wrapper-title">
         <h1 class="form__title">Добавить товар</h1>
-        <p class="form__id">ID: 201910241</p>
+        <span class="form__id">ID: 
+          <span class="vendor-code__id">201910241</span>
+        </span>
       </div>        
       <div class="form__inner">
         <ul class="form__list">
           <li class="item">
-            <label class="item__label" for="name">Наименование</label>
-            <input class="item__input" type="text" name="name" id="name">
+            <label class="item__label" for="title">Наименование</label>
+            <input class="item__input" type="text" name="title" id="title" required>
           </li>
 
           <li class="item">
             <label class="item__label" for="category">Категория</label>
-            <input class="item__input" type="text" name="category" id="category">
+            <input class="item__input" type="text" name="category" id="category" required>
           </li>
 
           <li class="item">
             <label class="item__label" for="units">Единицы измерения</label>
-            <input class="item__input" type="text" name="units" id="units">
+            <input class="item__input" type="text" name="units" id="units" required>
           </li>
 
           <li class="item discount">
@@ -46,25 +49,25 @@
               <label class="item__label" for="discount">Дисконт</label>                  
               <div class="discount__inner">                                        
                 <input class="discount__checkbox" type="checkbox"  id="discount" name="discount">
-                <input type="text" class="discount__input" name="discount_descript">
+                <input type="text" class="discount__input" name="discount_descript" disabled>
               </div>                  
               </fieldset>                
           </li>
           
           <li class="item item_descript">
             <label class="item__label" for="descript">Описание</label>
-            <textarea class="item__textarea" name="descript" id="descript">
+            <textarea class="item__textarea" name="descript" id="descript" required>
             </textarea>
           </li>
           
           <li class="item item_count">
             <label class="item__label" for="count">Количество</label>
-            <input class="item__input" type="number" name="count" id="count">
+            <input class="item__input" type="number" name="count" id="count" required>
           </li>
           
           <li class="item">
             <label class="item__label" for="price">Цена</label>
-            <input  class="item__input" type="number" name="price" id="price">
+            <input  class="item__input" type="number" name="price" id="price" required>
           </li>            
         </ul>
         
@@ -72,7 +75,11 @@
       </div>  
 
       <div class="form__footer crm__footer">
-        <p class="footer__sum">Итоговая стоимость: <span class="footer__sum-color">$&nbsp;900.00</span></p>
+        <p class="footer__sum">Итоговая стоимость: 
+          <span class="footer__sum-currency">$ 
+            <span class="footer__sum-cash"></span>
+          </span></p>
+        <!-- <p class="footer__sum">Итоговая стоимость: <span class="footer__sum-color">$&nbsp;900.00</span></p> -->
       
         <button class="button footer__button" type="submit">Добавить товар</button>
       </div>
@@ -89,7 +96,11 @@
   <div class="container-cms cms">    
     <div class="cms__title">
       <h1 class="title">CMS</h1>
-      <p class="subtitle">Итоговая стоимость: <span class="subtitle-color"> $900.00</span></p>
+      <p class="subtitle">Итоговая стоимость: 
+        <span class="subtitle-currency"> $
+          <span class="subtitle-cash">900.00</span>
+        </span>
+      </p>
     </div>
 
     <div class="cms__inner">
@@ -139,7 +150,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -163,7 +174,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -187,7 +198,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -211,7 +222,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -235,7 +246,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -259,7 +270,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -283,7 +294,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -307,7 +318,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -331,7 +342,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">                
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -355,7 +366,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
@@ -379,7 +390,7 @@
               </button>
             </td>
             <td class="td">
-              <button class="td__btn">
+              <button class="td__btn td__btn_cart">
                 <img src="./assets/cart.svg" alt="" class="td__img">                
               </button>
             </td>
