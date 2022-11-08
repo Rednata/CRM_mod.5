@@ -1,6 +1,6 @@
 'use strict';
 
-const arr = [
+const goods = [
   {
     'id': 253842678,
     'title': 'Смартфон Xiaomi 11T 8/128GB',
@@ -74,20 +74,15 @@ const arr = [
   },
 ];
 
-// Удаляю статику
-document.querySelectorAll('.tr').forEach(tr => {
-  tr.remove();
-});
-
 // Прописываю доп.свойство для объекта sum
-arr.map(elem => (elem.sum = elem.price * elem.count));
+goods.map(elem => (elem.sum = elem.price * elem.count));
 
 const sumInTable = document.querySelector('.subtitle-cash');
 
 // Нахожу суммы всех элементов массива и записываю это значение в textContent
 const countSumInTable = () => {
-  const sum = arr.reduce((acc, elem) => acc + elem.sum, 0);
-  console.log(sumInTable);
+  const sum = goods.reduce((acc, elem) => acc + elem.sum, 0);
+
   return sumInTable.textContent = sum;
 };
 
@@ -96,40 +91,55 @@ countSumInTable();
 const tableBody = document.querySelector('.tbody');
 
 const createRow = (obj) => {
-  const elemTR = document.createElement('tr');
+  const {id,
+    title,
+    category,
+    units,
+    count,
+    price,
+    sum,
+  } = obj;
 
-  elemTR.classList.add('tr');
+  const row = document.createElement('tr');
 
-  elemTR.insertAdjacentHTML('beforeend',
-      `<td>${obj.id}</td>
-    <td>${obj.title}</td>
-    <td>${obj.category}</td>
-    <td>${obj.units}</td>
-    <td>${obj.count}</td>
-    <td>${obj.price}</td>
-    <td>${obj.sum}</td>    
+  row.classList.add('tr');
+
+  row.insertAdjacentHTML('beforeend',
+      `<td>${id}</td>
+    <td>${title}</td>
+    <td>${category}</td>
+    <td>${units}</td>
+    <td>${count}</td>
+    <td>${price}</td>
+    <td>${sum}</td>    
     <td><button></button></td>
     <td><button></button></td>
-    <td><button class="td__btn td__btn_cart">
+    <td>
+      <button class="td__btn td__btn_cart">
           <img src="./assets/cart.svg" alt="" class="td__img">
-        </button></td>`,
+      </button>
+    </td>`,
   );
 
-  tableBody.append(elemTR);
+  tableBody.append(row);
 };
 
-const renderGoods = (arr) => {
-  arr.map(item => {
-    createRow(item);
-  });
+const renderGoods = (goods) => {
+  goods.map(createRow);
 };
 
-renderGoods(arr);
+// const renderGoods = (goods) => {
+//   goods.map(item => {
+//     createRow(item);
+//   });
+// };
+
+renderGoods(goods);
 
 const addGoodButton = document.querySelector('.features__button');
 const visibleCRM = document.querySelector('.overlay');
 
-const htmlID = document.querySelector('.vendor-code__id');
+const vendorCodeID = document.querySelector('.vendor-code__id');
 
 const closeForm = () => {
   visibleCRM.classList.remove('is-visible');
@@ -140,7 +150,7 @@ const randomID = () => Math.trunc(Math.random() * 1000000000);
 addGoodButton.addEventListener('click', e => {
   visibleCRM.classList.add('is-visible');
   const id = randomID();
-  htmlID.textContent = id;
+  vendorCodeID.textContent = id;
 });
 
 visibleCRM.addEventListener('click', e => {
@@ -156,9 +166,8 @@ const deleteTR = (target) => {
 
 const deleteItemObj = (target) => {
   const itemID = (target.textContent).slice(0, 9);
-  const indexElemID = arr.findIndex(elem => elem.id === Number(itemID));
-  arr.splice(indexElemID, 1);
-  console.log(arr);
+  const indexElemID = goods.findIndex(elem => elem.id === Number(itemID));
+  goods.splice(indexElemID, 1);
   countSumInTable();
 };
 
@@ -170,10 +179,10 @@ tableBody.addEventListener('click', e => {
   }
 });
 
-const addGoodsInArray = (good, id) => {
+const addGoods = (good, id) => {
   good.id = id;
   good.sum = good.price * good.count;
-  arr.push(good);
+  goods.push(good);
 };
 
 const form = document.querySelector('.form');
@@ -188,29 +197,26 @@ form.price.addEventListener('change', e => {
 });
 
 form.discount.addEventListener('change', e => {
-  console.dir(e.target.checked);
   if (e.target.checked) {
-    form.discount_descript.removeAttribute('disabled');
+    form.discount_descript.disabled = false;
   } else {
     form.discount_descript.value = '';
-    form.discount_descript.setAttribute('disabled', 'disabled');
+    form.discount_descript.disabled = true;
   }
 });
 
 form.addEventListener('submit', e => {
   e.preventDefault();
 
-  const id = htmlID.textContent;
+  const id = vendorCodeID.textContent;
 
   const formData = new FormData(e.target);
   const newGood = Object.fromEntries(formData);
 
-  console.log(newGood);
-  addGoodsInArray(newGood, id);
+  addGoods(newGood, id);
   createRow(newGood);
 
   countSumInTable();
-  console.log(form.discount.value);
 
   form.reset();
   modalSum.textContent = '';
