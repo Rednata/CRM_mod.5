@@ -1,21 +1,29 @@
+import { tableBody, subtitleCash } from './getElements.js';
+
+
 const getSumTable = (goods) => {
-  document.querySelector('.subtitle-cash').textContent =
-    goods.reduce((acc, elem) => acc += elem.sum, 0);
+  const totalProductPrice = goods.reduce((acc, elem) => acc += elem.sum, 0);
+
+  subtitleCash.textContent = totalProductPrice;
 };
 
-const deleteItem = (tableBody, goods) => {
+const deleteItem = (goods) => {
   tableBody.addEventListener('click', ({ target }) => {
     if (target.closest('.td__btn_cart')) {
-      const deleteObj = target.closest('tr');
-      deleteObj.remove();
+      const row = target.closest('tr');
+      const currentRowId = +row.querySelector('#product-id').textContent;
+      // Было:
+      // const currentPtoductIndex = goods.findIndex(item => item.id === +currentRowId);
+      // Стало:
+      const currentPtoductIndex = goods.findIndex(({ id }) =>
+        id === +currentRowId);
 
-      goods.splice(
-          goods.findIndex(item =>
-            String(item.id) === deleteObj.textContent.slice(0, 9)), 1);
+      goods.splice(currentPtoductIndex, 1);
+      row.remove();
     }
 
     getSumTable(goods);
   });
 };
 
-export {getSumTable, deleteItem};
+export { getSumTable, deleteItem };

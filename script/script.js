@@ -1,12 +1,11 @@
-import { getElementsFromPage } from './Modules/getElements.js';
-
-import { getSumTable, deleteItem } from './Modules/functionTable.js';
-
-import { renderGoods } from './Modules/render.js';
-
-import { controlModal } from './Modules/controlModal.js';
-
-import { changeForm, submitForm } from './Modules/functionForm.js';
+import { form } from './modules/getElements.js';
+import { getSumTable, deleteItem } from './modules/functionTable.js';
+import { renderGoods } from './modules/render.js';
+import { 
+  onfeaturesButtonClick,
+  onOverlayClick,
+} from './modules/controlModal.js';
+import { changeForm, submitForm } from './modules/functionForm.js';
 
 const goods = [
   {
@@ -83,18 +82,13 @@ const goods = [
 ];
 
 const init = () => {
-  const {
-    tableBody,
-    overlay,
-    form,
-  } = getElementsFromPage();
-
-  renderGoods(goods, tableBody);
+  renderGoods(goods);
   getSumTable(goods);
-  controlModal(overlay);
-  changeForm(form);
-  submitForm(form, goods);
-  deleteItem(tableBody, goods);
+  onfeaturesButtonClick();
+  onOverlayClick();
+  changeForm();
+  submitForm(goods);
+  deleteItem(goods);
 };
 
 init();

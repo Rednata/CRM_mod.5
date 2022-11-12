@@ -1,43 +1,41 @@
-// Здесь можно оставить form.discount_descript,
-// form.count.value, form.count.count ?
-// Или как лучше найти эти элементы?
-
+import {
+  form, discountInput, discountCheckbox,
+  itemInputCount, itemInputPrice,
+} from './getElements.js';
 import { createRow } from './render.js';
-
 import { closeModal } from './controlModal.js';
 import { addGoodInArray } from './functionCommon.js';
-
 import { getSumTable } from './functionTable.js';
 
-const isDiscountChecked = (form, target) => {
+const isDiscountChecked = (target) => {
   if (target.checked) {
-    form.discount_descript.disabled = false;
+    discountInput.disabled = false;
   } else {
-    form.discount_descript.disabled = true;
-    form.discount_descript.value = '';
+    discountInput.disabled = true;
+    discountInput.value = '';
   }
 };
 
-const getModalSum = (price, count, form) => {
-  form.querySelector('.footer__sum-cash').textContent = price * (count || 0);
+const getModalSum = (price, count) => {
+  form.querySelector('.footer__sum-cash').textContent = (price * count) || 0;
 };
 
-const changeForm = (form) => {
+const changeForm = () => {
   form.addEventListener('change', ({ target }) => {
-    if (target.classList.contains('discount__checkbox')) {
-      isDiscountChecked(form, target);
+    if (target === discountCheckbox) {
+      isDiscountChecked(target);
     }
 
-    if (target.classList.contains('item__input_count')) {
-      getModalSum(target.value, form.price.value, form);
+    if (target === itemInputCount) {
+      getModalSum(itemInputCount.value, itemInputPrice.value);
     }
-    if (target.classList.contains('item__input_price')) {
-      getModalSum(target.value, form.count.value, form);
+    if (target === itemInputPrice) {
+      getModalSum(itemInputPrice.value, itemInputCount.value);
     }
   });
 };
 
-const submitForm = (form, goods) => {
+const submitForm = (goods) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 

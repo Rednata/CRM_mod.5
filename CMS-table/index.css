@@ -1,9 +1,8 @@
-@import "../Common/fonts.css";
-@import "../Common/global.css";
-@import "../Common/normalize.css";
-@import "../Common/var.css";
-@import "../Common/button.css";
-@import "../CRM-modal/crm.css";
+@import "../common/fonts.css";
+@import "../common/global.css";
+@import "../common/normalize.css";
+@import "../common/var.css";
+@import "../common/button.css";
+@import "./crm.css";
 @import "./cms.css";   
-@import "../CRM-modal/close.css";
-
+@import "../common/close.css";
