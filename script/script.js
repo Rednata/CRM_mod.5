@@ -1,5 +1,8 @@
 import { form } from './modules/getElements.js';
-import { getSumTable, deleteItem } from './modules/functionTable.js';
+import {
+  getSumTable,
+  deleteItem,
+  onViewPictureButtonClick } from './modules/functionTable.js';
 import { renderGoods } from './modules/render.js';
 import { 
   onfeaturesButtonClick,
@@ -89,6 +92,7 @@ const init = () => {
   changeForm();
   submitForm(goods);
   deleteItem(goods);
+  onViewPictureButtonClick();
 };
 
 init();
