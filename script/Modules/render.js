@@ -11,6 +11,8 @@ const createRow = (item) => {
     units,
   } = item;
 
+  const url = '../../assets/images/pic.jpg';
+
   const row = document.createElement('tr');
   const sum = getSumProperty(price, count);
 
@@ -24,8 +26,16 @@ const createRow = (item) => {
       <td>${count}</td>
       <td>${price}</td>
       <td>${sum}</td>
-      <td><button></button></td>
-      <td><button></button></td>
+      <td>
+        <button class="td__btn td__btn_picture" data-pic='${url}'>
+          <img src="./assets/clarity_picture-line.svg" 
+        </button>
+      </td>
+      <td>
+      <button class="td__btn">
+        <img src="./assets/icons_edit.svg" 
+    </button>
+      </td>
       <td>
         <button class="td__btn td__btn_cart">
           <img src="./assets/cart.svg" 
