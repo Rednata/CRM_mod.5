@@ -2,10 +2,8 @@ import {
   form, discountInput, discountCheckbox,
   itemInputCount, itemInputPrice,
 } from './getElements.js';
-import { createRow } from './render.js';
+import { fetchSender } from '../fetchLoader.js';
 import { closeModal } from './controlModal.js';
-import { addGoodInArray } from './functionCommon.js';
-import { getSumTable } from './functionTable.js';
 
 const isDiscountChecked = (target) => {
   if (target.checked) {
@@ -35,7 +33,7 @@ const changeForm = () => {
   });
 };
 
-const submitForm = (goods) => {
+const submitForm = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -43,9 +41,7 @@ const submitForm = (goods) => {
     const formData = new FormData(target);
     const newGood = Object.fromEntries(formData);
 
-    createRow(newGood);
-    addGoodInArray(newGood, goods);
-    getSumTable(goods);
+    fetchSender(newGood);
     form.reset();
     closeModal();
   });
