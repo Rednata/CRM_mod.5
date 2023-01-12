@@ -14,8 +14,18 @@
 <!-- -------------- CRM  Модальное окно -------------  -->
 <div class="overlay">
 <div class="container-crm">
+  <div class="error">
+    <button class="close error__close">
+      <span class="close__dush close__dush_first"></span>
+      <span class="close__dush close__dush_second"></span>
+    </button>
 
-    <button class="close">
+    <div class="error__title">      
+      Что-то пошло не так
+    </div>
+  </div>
+
+    <button class="close close__modal">
       <span class="close__dush close__dush_first"></span>
       <span class="close__dush close__dush_second"></span>
     </button>
@@ -79,7 +89,6 @@
           <span class="footer__sum-currency">$ 
             <span class="footer__sum-cash"></span>
           </span></p>
-        <!-- <p class="footer__sum">Итоговая стоимость: <span class="footer__sum-color">$&nbsp;900.00</span></p> -->
       
         <button class="button footer__button" type="submit">Добавить товар</button>
       </div>
@@ -98,7 +107,7 @@
       <h1 class="title">CMS</h1>
       <p class="subtitle">Итоговая стоимость: 
         <span class="subtitle-currency"> $
-          <span class="subtitle-cash">900.00</span>
+          <span class="subtitle-cash"></span>
         </span>
       </p>
     </div>

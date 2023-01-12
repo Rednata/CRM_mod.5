@@ -1,5 +1,6 @@
 import { tableBody, vendorCodeId } from './getElements.js';
 import { getSumProperty } from './functionCommon.js';
+import { getSumTable } from './functionTable.js';
 
 const createRow = (item) => {
   const {
@@ -46,13 +47,15 @@ const createRow = (item) => {
 };
 
 //  Сокращенный вариант:
-const renderGoods = (goods) => goods.forEach(createRow);
+// const renderGoods = (goods) => goods.forEach(createRow);
 
-// const renderGoods = (goods) => {
-//   goods.forEach(item => {
-//     createRow(item);
-//   });
-// };
+const renderGoods = (goods) => {
+  const tbody = document.querySelector('.tbody');
+  tbody.innerHTML = '';
+  goods.forEach(item => {
+    createRow(item);
+  });
+  getSumTable(goods);
+};
 
 export {renderGoods, createRow};
- 
