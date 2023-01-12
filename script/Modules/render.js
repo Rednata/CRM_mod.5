@@ -59,4 +59,3 @@ const renderGoods = (goods) => {
 };
 
 export {renderGoods, createRow};
- 

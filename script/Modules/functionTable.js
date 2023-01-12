@@ -1,6 +1,6 @@
-import { fetchDelete } from '../fetchLoader.js';
+// import { fetchDelete } from './modules/fetchLoader.js';
 import { tableBody, subtitleCash } from './getElements.js';
-
+import { fetchDelete } from './fetchLoader.js';
 const getSumTable = (goods) => {
   const totalProductPrice = goods.reduce((acc, elem) => acc += elem.sum, 0);
 

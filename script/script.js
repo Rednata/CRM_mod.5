@@ -1,9 +1,9 @@
-import { fetchLoader } from './fetchLoader.js';
+import { fetchLoader } from './modules/fetchLoader.js';
 import {
-
   deleteItem,
   onViewPictureButtonClick } from './modules/functionTable.js';
 import { 
+  onErrorCloseClick,
   onfeaturesButtonClick,
   onOverlayClick,
 } from './modules/controlModal.js';
@@ -87,6 +87,7 @@ const init = () => {
   fetchLoader();
   onfeaturesButtonClick();
   onOverlayClick();
+  onErrorCloseClick();
   changeForm();
   submitForm();
   deleteItem();
