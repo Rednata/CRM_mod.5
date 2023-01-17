@@ -2,10 +2,12 @@ import {
   form, discountInput, discountCheckbox,
   itemInputCount, itemInputPrice,
 } from './getElements.js';
-import { createRow } from './render.js';
-import { closeModal } from './controlModal.js';
-import { addGoodInArray } from './functionCommon.js';
-import { getSumTable } from './functionTable.js';
+import { fetchSender } from './fetchLoader.js';
+
+const resetForm = () => {
+  const form = document.querySelector('.form');
+  form.reset();
+};
 
 const isDiscountChecked = (target) => {
   if (target.checked) {
@@ -19,6 +21,9 @@ const isDiscountChecked = (target) => {
 const getModalSum = (price, count) => {
   form.querySelector('.footer__sum-cash').textContent = (price * count) || 0;
 };
+
+const getModalSumZero = () =>
+  form.querySelector('.footer__sum-cash').textContent = '';
 
 const changeForm = () => {
   form.addEventListener('change', ({ target }) => {
@@ -35,7 +40,7 @@ const changeForm = () => {
   });
 };
 
-const submitForm = (goods) => {
+const submitForm = () => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -43,12 +48,8 @@ const submitForm = (goods) => {
     const formData = new FormData(target);
     const newGood = Object.fromEntries(formData);
 
-    createRow(newGood);
-    addGoodInArray(newGood, goods);
-    getSumTable(goods);
-    form.reset();
-    closeModal();
+    fetchSender(newGood);
   });
 };
 
-export {changeForm, submitForm};
+export {changeForm, submitForm, resetForm, getModalSumZero};
