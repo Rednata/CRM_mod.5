@@ -64,7 +64,7 @@
   vertical-align: middle;
   width: 20px;
   height: 20px;
-  background-image: url("./assets/Filter.svg");
+  background-image: url("../assets/Filter.svg");
   margin-right: 10px;
 }
 
@@ -82,7 +82,7 @@
 .features__search {
   width: 20px;
   height: 20px;
-  background-image: url("./assets/Search.svg");
+  background-image: url("../assets/Search.svg");
   background-repeat: no-repeat;
   background-position: center;
   border: none;
@@ -170,7 +170,7 @@ td:nth-child(n+4) {
   align-self: center;
   width: 8px;
   height: 5px;
-  background-image: url("./assets/Polygon3.svg");
+  background-image: url("../assets/Polygon3.svg");
   background-repeat: no-repeat;
   background-position: center;
   border: none;  
@@ -189,11 +189,11 @@ td:nth-child(n+4) {
   background-position: center;
   border: none;
   background-color: transparent;
-  background-image: url("./assets/arrow__left.svg");
+  background-image: url("../assets/arrow__left.svg");
 }
 
 .arrow_left {
-  background-image: url("./assets/arrow__left.svg");
+  background-image: url("../assets/arrow__left.svg");
 }
 
 .arrow_right {
