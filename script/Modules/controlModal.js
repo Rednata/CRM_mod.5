@@ -1,13 +1,16 @@
-import { addID } from './functionCommon.js';
 import { overlay, featuresButton, form } from './getElements.js';
+import { getModalSumZero, resetForm } from './functionForm.js';
+
+const modalError = document.querySelector('.error');
+const errorClose = document.querySelector('.error__close');
 
 const openModal = () => overlay.classList.add('is-visible');
 const closeModal = () => overlay.classList.remove('is-visible');
+const closeError = () => modalError.classList.remove('error__active');
 
 const onfeaturesButtonClick = () => {
   featuresButton.addEventListener('click', () => {
     openModal();
-    addID();
   });
 };
 
@@ -15,38 +18,20 @@ const onOverlayClick = () => {
   overlay.addEventListener('click', ({target}) => {
     if (
       target.classList.contains('overlay') ||
-      target.closest('.close')) {
+      target.closest('.close__modal')) {
       closeModal();
-      form.reset();
+      closeError();
+      getModalSumZero();
+      resetForm();
     }
   });
 };
 
-export {closeModal, onfeaturesButtonClick, onOverlayClick};
+const onErrorCloseClick = () => {
+  errorClose.addEventListener('click', () => {
+    closeError();
+  });
+};
 
+export {closeModal, onfeaturesButtonClick, onOverlayClick, onErrorCloseClick};
 
-
-// import { addID } from './functionCommon.js';
-// import { overlay, featuresButton } from './getElements.js';
-
-// const openModal = () => overlay.classList.add('is-visible');
-// const closeModal = () => overlay.classList.remove('is-visible');
-
-// const onfeaturesButtonClick = () => {
-//   featuresButton.addEventListener('click', () => {
-//     openModal();
-//     addID();
-// });
-
-// const onOverlayClick = () => {
-//     overlay.addEventListener('click', ({ target }) => {
-//       if (
-//         target.classList.contains('overlay') || target.closest('.close')
-//       ) {
-//         closeModal();
-//       }
-//     });
-//   };
-// };
-
-// export {closeModal};
